@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOHFIT HQ Bandra</title>
+<meta name="description" content="SOHFIT HQ, Bandra, Mumbai. Group classes, personal training, buddy program, open gym, consultations and weekend workshops.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<!--
+  Layout map (from the HOFIN reference the client supplied, rebuilt dark):
+  framed hero with pins + booking bar · fading about statement · framed photo showcase with floating card ·
+  how-it-works steps beside an app panel · services rail · coaches rail · numbered FAQ · split contact block ·
+  giant wordmark footer over photography.
+  Palette reference: a strength floor at 6am. Rubber matting, chalk dust, SOHFIT orange (#F57B1E, from their site).
+-->
+<style>
+:root{
+  color-scheme: dark;
+  --ground:#0f100f;      /* rubber floor */
+  --surface:#181a18;     /* matting tile */
+  --raise:#222522;       /* bench vinyl */
+  --line:rgba(236,233,226,.12);
+  --chalk:#ece9e2;       /* chalk white */
+  --chalk-2:rgba(236,233,226,.66);
+  --chalk-3:rgba(236,233,226,.42);
+  --plate:#f57b1e;       /* SOHFIT brand orange (their Elementor accent) */
+  --plate-ink:#1c0d02;
+
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+
+  --wrap:1320px;
+  --gut:clamp(16px,3vw,32px);
+  --r:22px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+em,i,cite,address,dfn,var{font-style:normal}
+html{scroll-behavior:smooth;background:var(--ground)}
+body{margin:0;background:var(--ground);color:var(--chalk);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--plate);color:var(--plate-ink)}
+:focus-visible{outline:2px solid var(--plate);outline-offset:3px;border-radius:6px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.page{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut);padding-block:var(--gut) 0}
+.label{font:500 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--chalk-2);
+  display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:8px 14px;border-radius:99px}
+.label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--plate)}
+.h2{font:700 clamp(2rem,4.6vw,3.6rem)/1 var(--f-display);font-stretch:112%;letter-spacing:-.025em;margin:18px 0 0;text-wrap:balance;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:99px;border:0;cursor:pointer;
+  font:600 14px/1 var(--f-body);transition:transform .5s var(--ease),background .3s}
+.btn svg{width:14px;height:14px;transition:transform .5s var(--ease)}
+.btn:hover svg{transform:translate(2px,-2px) rotate(0deg)}
+.btn-plate{background:var(--plate);color:var(--plate-ink)}
+.btn-plate:hover{background:#ff8d3a}
+.btn-line{background:transparent;color:var(--chalk);border:1px solid var(--line)}
+.btn-line:hover{border-color:var(--chalk-3)}
+.ph{background:linear-gradient(135deg,#232622,#141614);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.05) brightness(.82)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);margin-top:calc(-1 * var(--gut));
+  min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background:#141614;
+  --hx:max(calc((100vw - var(--wrap)) / 2 + var(--gut)), var(--gut))}
+.hero>.nav,.hero>.hero-copy{padding-inline:var(--hx)}
+.hero>.booker{margin-inline:var(--hx)}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.3) brightness(.55) contrast(1.1);
+  transform:scale(1.08);animation:settle 2.4s var(--ease) forwards}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg,rgba(15,16,15,.85) 0%,rgba(15,16,15,.15) 30%,rgba(15,16,15,.2) 60%,rgba(15,16,15,.92) 100%)}
+@keyframes settle{to{transform:scale(1)}}
+.nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:24px}
+.logo{font:800 22px/1 var(--f-display);font-stretch:125%;letter-spacing:.06em}
+.logo b{color:var(--plate);font-weight:800}
+.nav ul{display:flex;gap:clamp(14px,2.2vw,32px);list-style:none;margin:0;padding:0;font-size:14px;color:var(--chalk-2)}
+.nav ul a:hover{color:var(--chalk)}
+.nav .btn{padding:11px 18px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:99px;padding:10px 16px;font-size:13px;cursor:pointer}
+
+.hero-copy{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;padding-block:20px 0}
+.kicker{font:500 12px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--plate);margin-bottom:18px}
+.hero h1{margin:0;font:800 clamp(3.2rem,11vw,11.5rem)/.84 var(--f-display);font-stretch:125%;letter-spacing:-.035em;text-transform:uppercase}
+.hero h1 .row{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .row span{display:inline-block;transform:translateY(105%);animation:rise 1.2s var(--ease) forwards}
+.hero h1 .row:nth-child(2) span{animation-delay:.12s}
+.hero h1 .row:nth-child(3) span{animation-delay:.24s}
+.hero h1 .dim{color:transparent;-webkit-text-stroke:1.5px rgba(236,233,226,.6)}
+@keyframes rise{to{transform:none}}
+.hero-sub{max-width:44ch;color:var(--chalk-2);margin:22px 0 0;font-size:clamp(15px,1.3vw,17px);opacity:0;animation:fade 1s .6s var(--ease) forwards}
+@keyframes fade{to{opacity:1}}
+
+.pin{position:absolute;z-index:4;display:flex;align-items:center;gap:8px;font:500 12px/1 var(--f-body);
+  background:rgba(15,16,15,.72);border:1px solid var(--line);padding:8px 12px 8px 8px;border-radius:99px;color:var(--chalk);
+  transition:background .3s}
+.pin:hover{background:var(--plate);color:var(--plate-ink)}
+.pin i{width:10px;height:10px;border-radius:50%;background:var(--plate);box-shadow:0 0 0 0 rgba(245,123,30,.6);animation:ping 2.4s infinite}
+.pin:hover i{background:var(--plate-ink)}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(245,123,30,.55)}70%,100%{box-shadow:0 0 0 12px rgba(245,123,30,0)}}
+.pin.p1{top:30%;right:8%} .pin.p2{top:52%;right:30%} .pin.p3{top:62%;right:5%}
+
+.booker{position:relative;z-index:5;margin-block:28px clamp(18px,3vw,36px);background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r);padding:18px clamp(16px,2vw,24px) 20px;
+  opacity:0;transform:translateY(24px);animation:up 1s .8s var(--ease) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.booker-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.tabs{display:flex;background:var(--ground);border-radius:99px;padding:4px}
+.tabs button{border:0;background:none;padding:9px 18px;border-radius:99px;font-size:13px;font-weight:600;color:var(--chalk-2);cursor:pointer;transition:.3s}
+.tabs button[aria-selected="true"]{background:var(--chalk);color:var(--ground)}
+.since{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--chalk-2)}
+.faces{display:flex}
+.faces span{width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-8px;overflow:hidden;background:var(--raise)}
+.faces span:first-child{margin-left:0}
+.faces img{width:100%;height:100%;object-fit:cover}
+.since b{color:var(--chalk);font-weight:600}
+.fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:12px;align-items:end}
+.field label{display:block;font-size:12px;color:var(--chalk-3);margin-bottom:8px}
+.field select,.field input{width:100%;appearance:none;background:var(--raise) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23ece9e2' stroke-width='1.6'%3E%3Cpath d='m3 4.5 3 3 3-3'/%3E%3C/svg%3E") no-repeat right 14px center;
+  border:1px solid transparent;border-radius:12px;padding:13px 36px 13px 14px;font-size:14px;color:var(--chalk);transition:border-color .3s}
+.field input{background-image:none;padding-right:14px}
+.field select:hover,.field input:hover{border-color:var(--line)}
+.fields .btn{height:47px;justify-content:center}
+.booker-note{margin:12px 0 0;font-size:12px;color:var(--chalk-3)}
+.booker-note b{color:var(--plate);font-weight:600}
+
+/* ---------- MARQUEE ---------- */
+.marquee{overflow:hidden;border-block:1px solid var(--line);width:100vw;margin:0 0 0 calc(50% - 50vw);background:var(--surface);padding:16px 0;
+  font:600 13px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--chalk-2)}
+.marquee .track{display:flex;width:max-content;animation:slide 38s linear infinite}
+.marquee span{padding-right:48px;display:inline-flex;align-items:center;gap:48px}
+.marquee span::after{content:"";width:7px;height:7px;background:var(--plate);transform:rotate(45deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- ABOUT ---------- */
+.about{text-align:center;padding:clamp(70px,10vw,130px) 0}
+.about p{max-width:30ch;margin:28px auto 0;font:500 clamp(1.5rem,3.1vw,2.55rem)/1.22 var(--f-display);font-stretch:100%;letter-spacing:-.015em;text-wrap:balance}
+.about p .w{opacity:.28;transition:opacity .4s}
+.about p .w.on{opacity:1}
+
+/* ---------- SHOWCASE ---------- */
+.show{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/8;min-height:440px;max-width:100%}
+.show>.ph{position:absolute;inset:0}
+.show>.ph img{transform:scale(1.12);transition:transform 1.6s var(--ease)}
+.show.in>.ph img{transform:scale(1)}
+.show::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,16,15,.75),rgba(15,16,15,.1) 60%)}
+.show .pin.s1{top:16%;left:18%} .show .pin.s2{top:24%;right:14%} .show .pin.s3{top:52%;left:52%}
+.show-card{position:absolute;z-index:4;left:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);width:min(420px,calc(100% - 24px));
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.show-card h3{margin:0;font:700 22px/1.1 var(--f-display);font-stretch:110%;text-transform:uppercase;letter-spacing:-.01em}
+.show-card .loc{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--chalk-3);margin:8px 0 14px}
+.show-card .loc svg{width:13px;height:13px}
+.show-card p{margin:0;font-size:14px;color:var(--chalk-2)}
+.card-foot{display:flex;justify-content:space-between;align-items:end;margin-top:22px;gap:12px}
+.show-card .price{font:700 24px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.show-card .price small{display:block;font:400 11px/1 var(--f-mono);letter-spacing:.1em;color:var(--chalk-3);margin-bottom:6px;text-transform:uppercase}
+.show-card{padding:26px;width:min(440px,calc(100% - 24px))}
+.card-tag{display:inline-block;font:500 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--plate);border:1px solid rgba(245,123,30,.4);padding:7px 10px;border-radius:99px;margin-bottom:14px}
+.show-card h3{font-size:clamp(26px,2.6vw,34px)}
+.inside{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.inside li{padding:14px 10px 0 0;display:grid;gap:4px}
+.inside li+li{padding-left:12px;border-left:1px solid var(--line)}
+.inside b{font:700 22px/1 var(--f-display);font-stretch:110%;color:var(--chalk)}
+.inside span{font-size:11px;line-height:1.35;color:var(--chalk-3)}
+.show-card .price{color:var(--plate)}
+.show-card .price em{font:400 12px/1 var(--f-body);color:var(--chalk-3)}
+.card-cta{width:100%;justify-content:center;margin-top:18px}
+.amen{display:flex;gap:6px;flex-wrap:wrap}
+.amen span{font-size:11px;border:1px solid var(--line);border-radius:99px;padding:6px 10px;color:var(--chalk-2)}
+
+/* ---------- HOW ---------- */
+.how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center;padding:clamp(80px,10vw,140px) 0}
+.steps{margin-top:36px;display:grid;gap:30px}
+.step{cursor:pointer;border:0;background:none;text-align:left;padding:0;display:block;width:100%}
+.step small{font:500 12px/1 var(--f-mono);color:var(--chalk-3)}
+.step h3{margin:8px 0 6px;font:600 clamp(1.4rem,2.4vw,1.9rem)/1.1 var(--f-display);font-stretch:105%;color:var(--chalk-3);transition:color .4s}
+.step p{margin:0;font-size:14px;color:var(--chalk-3);max-width:46ch;transition:color .4s}
+.step.on h3{color:var(--chalk)} .step.on p{color:var(--chalk-2)} .step.on small{color:var(--plate)}
+.step .bar{height:2px;background:var(--line);margin-top:14px;overflow:hidden}
+.step .bar i{display:block;height:100%;width:0;background:var(--plate)}
+.step.on .bar i{animation:fill 5s linear forwards}
+@keyframes fill{to{width:100%}}
+.app{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;overflow:hidden;min-width:0}
+.app-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.app-head b{font:700 14px/1 var(--f-display);font-stretch:120%;letter-spacing:.05em}
+.app-head span{font:500 11px/1 var(--f-mono);color:var(--chalk-3);letter-spacing:.08em}
+.app-filter{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin:16px 0}
+.app-filter div{background:var(--raise);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--chalk-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-filter div small{display:block;font-size:10px;color:var(--chalk-3);margin-bottom:3px}
+.app-filter .go{background:var(--plate);color:var(--plate-ink);font-weight:600;display:flex;align-items:center}
+.app-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mini{background:var(--raise);border-radius:14px;overflow:hidden;transition:transform .6s var(--ease),opacity .4s}
+.mini .ph{aspect-ratio:4/4.4}
+.mini div.t{padding:10px 12px 12px}
+.mini b{display:block;font-size:13px;font-weight:600}
+.mini span{font-size:11px;color:var(--chalk-3)}
+.app[data-step="0"] .mini:nth-child(n+2){opacity:.35}
+.app[data-step="1"] .mini:not(:nth-child(2)){opacity:.35}
+.app[data-step="1"] .mini:nth-child(2){transform:translateY(-8px)}
+.app[data-step="2"] .mini:not(:nth-child(3)){opacity:.35}
+.app[data-step="2"] .mini:nth-child(3){transform:translateY(-8px)}
+.app-msg{margin-top:14px;font-size:12px;color:var(--chalk-2);background:var(--ground);border-radius:10px;padding:12px 14px;display:flex;gap:10px;align-items:center}
+.app-msg::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--plate)}
+
+/* ---------- SERVICES RAIL ---------- */
+.sec-head{text-align:center}
+.rail-wrap{margin-top:44px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*14px)/4);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start;min-width:0}
+.intro-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.intro-card h3{margin:0;font:700 22px/1.1 var(--f-display);font-stretch:110%;text-transform:uppercase}
+.intro-card p{margin:0;font-size:14px;color:var(--chalk-2)}
+.intro-card .btn{align-self:flex-start;padding:11px 16px;font-size:13px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px;display:flex;flex-direction:column;transition:border-color .4s}
+.svc:hover{border-color:rgba(245,123,30,.5)}
+.svc .ph{position:relative;border-radius:12px;aspect-ratio:4/3.4}
+.svc .ph img{transition:transform 1s var(--ease)}
+.svc:hover .ph img{transform:scale(1.06)}
+.svc .tag{position:absolute;top:10px;left:10px;font:500 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;background:rgba(15,16,15,.8);padding:7px 10px;border-radius:99px}
+.svc .body{padding:14px 10px 10px;display:flex;flex-direction:column;gap:8px;flex:1}
+.svc h3{margin:0;font:700 18px/1.15 var(--f-display);font-stretch:108%;text-transform:uppercase}
+.svc p{margin:0;font-size:13px;color:var(--chalk-2);flex:1}
+.svc a{font-size:13px;font-weight:600;display:inline-flex;gap:8px;align-items:center;color:var(--plate);margin-top:6px}
+.arrows{display:flex;gap:10px;justify-content:center;margin-top:26px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;display:grid;place-items:center;transition:.3s}
+.arrows button:hover{background:var(--chalk);color:var(--ground)}
+.arrows svg{width:16px;height:16px}
+
+/* ---------- COACHES ---------- */
+.coaches{padding:clamp(90px,11vw,150px) 0 0}
+.coach-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.coach-head p{max-width:44ch;color:var(--chalk-2);margin:16px 0 0;font-size:15px}
+.coach-head .arrows{margin:0}
+.crail{grid-auto-columns:calc((100% - 3*14px)/4);margin-top:40px}
+.coach{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--line)}
+.coach .ph{position:absolute;inset:0}
+.coach .ph img{object-position:center 20%;transition:transform 1.2s var(--ease),filter .6s}
+.coach:hover .ph img{transform:scale(1.05);filter:grayscale(0) brightness(.95)}
+.coach .cap{position:absolute;left:8px;right:8px;bottom:8px;background:var(--surface);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.coach b{font:700 16px/1 var(--f-display);font-stretch:110%;text-transform:uppercase}
+.coach small{display:block;font:400 10px/1 var(--f-mono);letter-spacing:.12em;color:var(--chalk-3);margin-top:6px;text-transform:uppercase}
+.coach .go{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex:none;transition:.3s}
+.coach:hover .go{background:var(--plate);color:var(--plate-ink);border-color:var(--plate)}
+.coach .go svg{width:12px;height:12px}
+
+/* ---------- FAQ ---------- */
+.faq{padding:clamp(90px,11vw,150px) 0}
+.faq-list{max-width:860px;margin:44px auto 0;list-style:none;padding:0;counter-reset:q}
+.faq-list li{border-bottom:1px solid var(--line);counter-increment:q}
+.faq-list button{width:100%;display:grid;grid-template-columns:34px 1fr 34px;gap:12px;align-items:center;background:none;border:0;padding:22px 0;text-align:left;cursor:pointer}
+.faq-list button::before{content:counter(q,decimal-leading-zero);font:500 12px/1 var(--f-mono);color:var(--chalk-3)}
+.faq-list .q{font:500 clamp(16px,1.7vw,19px)/1.35 var(--f-body)}
+.faq-list .x{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;transition:.4s var(--ease)}
+.faq-list .x svg{width:12px;height:12px;transition:transform .4s var(--ease)}
+.faq-list li.open .x{background:var(--plate);color:var(--plate-ink);border-color:var(--plate)}
+.faq-list li.open .x svg{transform:rotate(180deg)}
+.faq-list .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.faq-list li.open .a{grid-template-rows:1fr}
+.faq-list .a>div{overflow:hidden}
+.faq-list .a p{margin:0;padding:0 46px 24px;color:var(--chalk-2);font-size:14px;max-width:70ch}
+
+/* ---------- CONTACT ---------- */
+.contact{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(16px,2vw,24px);background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 4px);padding:clamp(14px,1.6vw,18px)}
+.contact-l{padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.contact-l h2{font:700 clamp(2rem,4.2vw,3.3rem)/1 var(--f-display);font-stretch:112%;letter-spacing:-.025em;margin:22px 0 14px;text-transform:uppercase;text-wrap:balance}
+.contact-l p{margin:0;color:var(--chalk-2);font-size:15px;max-width:44ch}
+.dir{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;font-size:14px}
+.dir small{display:block;font:500 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--chalk-3);margin-bottom:8px}
+.dir a,.dir span{color:var(--chalk);user-select:all}
+.dir a:hover{color:var(--plate)}
+.form{background:var(--ground);border-radius:var(--r);padding:clamp(18px,2.4vw,28px);display:grid;gap:16px}
+.form label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}
+.form input,.form textarea,.form select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 14px;font-size:14px;transition:border-color .3s}
+.form select{appearance:none}
+.form input::placeholder,.form textarea::placeholder{color:var(--chalk-3)}
+.form input:focus,.form textarea:focus,.form select:focus{outline:none;border-color:var(--plate)}
+.form textarea{min-height:120px;resize:vertical}
+.form .btn{justify-content:center;width:100%}
+.form .hint{font-size:12px;color:var(--chalk-3);margin:0;text-align:center}
+
+/* ---------- FOOTER ---------- */
+.foot{position:relative;margin-top:clamp(40px,6vw,80px);width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;
+  --hx:max(calc((100vw - var(--wrap)) / 2 + var(--gut)), var(--gut));min-height:clamp(520px,62vw,760px);display:flex;flex-direction:column;justify-content:flex-end}
+.foot>.ph{position:absolute;inset:0}
+.foot>.ph img{object-position:center 35%;filter:grayscale(.15) brightness(.72) contrast(1.08)}
+.foot::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,16,15,.55),rgba(15,16,15,0) 30%,rgba(15,16,15,0) 60%,rgba(15,16,15,.85))}
+.giant{position:absolute;z-index:2;top:clamp(20px,4vw,48px);left:0;right:0;text-align:center;margin:0;
+  font:900 18.5vw/.8 var(--f-display);font-stretch:125%;letter-spacing:-.04em;color:var(--chalk);mix-blend-mode:overlay;pointer-events:none}
+.giant.solid{mix-blend-mode:normal;color:transparent;-webkit-text-stroke:1px rgba(236,233,226,.35)}
+.foot .pin.f1{top:46%;left:24%} .foot .pin.f2{top:58%;right:16%} .foot .pin.f3{top:68%;left:8%}
+.foot-bar{position:relative;z-index:3;margin:0 var(--hx) calc(clamp(18px,3vw,36px) + env(safe-area-inset-bottom,0px));background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px clamp(16px,2vw,26px)}
+.foot-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-row ul{display:flex;gap:clamp(14px,2.5vw,34px);list-style:none;margin:0;padding:0;font-size:14px;flex-wrap:wrap}
+.foot-row ul a:hover{color:var(--plate)}
+.foot-row.sub{border-top:1px solid var(--line);margin-top:20px;padding-top:18px;font-size:12px;color:var(--chalk-3)}
+.foot-row.sub ul{font-size:12px;color:var(--chalk-3)}
+.clock{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.end{display:none}
+
+/* scroll-linked reveals (content stays visible where unsupported) */
+@supports (animation-timeline: view()){
+  .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes rv{from{opacity:.4;transform:translateY(40px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1080px){
+  .rail{grid-auto-columns:calc((100% - 2*14px)/3)}
+  .fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fields .btn{grid-column:1/-1}
+}
+@media (max-width:900px){
+  .nav ul,.nav .btn{display:none}
+  .menu-btn{display:block}
+  .nav.open ul{display:flex;position:absolute;top:70px;left:12px;right:12px;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;gap:16px;font-size:16px}
+  .how,.contact{grid-template-columns:1fr}
+  .rail{grid-auto-columns:calc((100% - 14px)/2)}
+  .show{aspect-ratio:auto;min-height:560px}
+  .pin.p2,.show .pin.s3{display:none}
+}
+@media (max-width:560px){
+  .rail{grid-auto-columns:82%}
+  .fields{grid-template-columns:1fr}
+  .app-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-cards .mini:nth-child(3){display:none}
+  .app-filter{grid-template-columns:1fr 1fr}
+  .app-filter .go{grid-column:1/-1;justify-content:center}
+  .dir{grid-template-columns:1fr}
+  .pin.p1{top:auto;bottom:auto;display:none}
+  .pin.p3{top:18%;right:4%}
+  .faq-list .a p{padding:0 0 22px}
+  .faq-list button{grid-template-columns:28px 1fr 34px}
+  .foot .pin.f1{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .marquee .track{animation:none}
+  .hero h1 .row span{transform:none}
+  .rv{animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-img"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Homepage-Image-3.webp" alt="Members training at SOHFIT HQ" fetchpriority="high"></div>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#top" class="logo">SOH<b>FIT</b></a>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#coaches">Coaches</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="https://sohfit.com/" target="_blank" rel="noopener">Train online</a></li>
+      </ul>
+      <a href="#book" class="btn btn-line">Book a trial</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    </nav>
+
+    <a class="pin p1" href="#services"><i></i>Group classes</a>
+    <a class="pin p2" href="#services"><i></i>Personal training</a>
+    <a class="pin p3" href="#services"><i></i>Open gym</a>
+
+    <div class="hero-copy">
+      <div class="kicker">SOHFIT HQ · Bandra, Mumbai</div>
+      <h1>
+        <span class="row"><span>The new</span></span>
+        <span class="row"><span class="dim">SOHFIT</span></span>
+        <span class="row"><span>is here</span></span>
+      </h1>
+      <p class="hero-sub">Six years of online programs, bootcamps and one-on-one training, now under one roof on Linking Road. Join the SOHFIT community.</p>
+    </div>
+
+    <form class="booker" id="book" novalidate>
+      <div class="booker-top">
+        <div class="tabs" role="tablist" aria-label="Where you train">
+          <button type="button" role="tab" aria-selected="true" data-mode="hq">At HQ</button>
+          <button type="button" role="tab" aria-selected="false" data-mode="online">Online</button>
+        </div>
+        <div class="since">
+          <div class="faces" aria-hidden="true">
+            <span><img src="https://sohfithq.com/wp-content/uploads/2023/12/IMG_6863-715x1024.jpg" alt=""></span>
+            <span><img src="https://sohfithq.com/wp-content/uploads/2024/10/WhatsApp-Image-2025-01-08-at-17.21.36-768x1024.jpeg" alt=""></span>
+            <span><img src="https://sohfithq.com/wp-content/uploads/2026/05/IMG_1074-1-768x1024.jpg" alt=""></span>
+          </div>
+          <span><b>8 coaches</b> · 6 years of training</span>
+        </div>
+      </div>
+      <div class="fields">
+        <div class="field">
+          <label for="bk-service">Service</label>
+          <select id="bk-service">
+            <option>Group class</option><option>Personal training</option><option>Buddy program</option>
+            <option>Open gym</option><option>Consultation</option><option>Weekend workshop</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bk-coach">Coach</label>
+          <select id="bk-coach">
+            <option>Any coach</option><option>Sohrab K.</option><option>Divij M.</option><option>Somaditya S.</option>
+            <option>Abe L.</option><option>Vanshika C.</option><option>Devika S.</option><option>Ridhisha S.</option><option>Krishay S.</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bk-time">Preferred time</label>
+          <select id="bk-time"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Weekend</option></select>
+        </div>
+        <div class="field">
+          <label for="bk-name">Your name</label>
+          <input id="bk-name" type="text" placeholder="First name" autocomplete="given-name">
+        </div>
+        <button class="btn btn-plate" type="submit">Enquire on WhatsApp
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg>
+        </button>
+      </div>
+      <p class="booker-note" id="bk-note">Trial class at SOHFIT HQ: <b>INR 1,400 + GST</b>. Come 10 minutes early on your first visit.</p>
+    </form>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><div class="track">
+    <span>SOHFIT HQ open now at Bandra, Mumbai</span><span>Group classes</span><span>Personal training</span><span>Buddy program</span><span>Open gym</span><span>Weekend workshops</span>
+    <span>SOHFIT HQ open now at Bandra, Mumbai</span><span>Group classes</span><span>Personal training</span><span>Buddy program</span><span>Open gym</span><span>Weekend workshops</span>
+  </div></div>
+
+  <!-- ABOUT -->
+  <section class="about" aria-labelledby="about-l">
+    <span class="label" id="about-l">About</span>
+    <p id="aboutText">For six years SOHFIT has blended online programs, physical bootcamps and one-on-one training. SOHFIT HQ in Bandra is more than a fitness studio: a fair and safe space where you feel seen and valued, skilled coaches to guide you, a like-minded community to thrive with, and the finest equipment to train on.</p>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="show rv" id="show" aria-label="SOHFIT HQ studio">
+    <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/10/Group-class-main-banner-FINAL.jpg" alt="A group class in progress at SOHFIT HQ" loading="lazy"></div>
+    <a class="pin s1" href="#faq"><i></i>Lockers &amp; showers</a>
+    <a class="pin s2" href="#services"><i></i>Barbells · kettlebells · medballs</a>
+    <a class="pin s3" href="#coaches"><i></i>Certified coaches</a>
+    <div class="show-card">
+      <span class="card-tag">Now open · Bandra</span>
+      <h3>SOHFIT HQ</h3>
+      <div class="loc"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 13s4.5-4.2 4.5-7.5a4.5 4.5 0 0 0-9 0C2.5 8.8 7 13 7 13Z"/><circle cx="7" cy="5.5" r="1.6"/></svg>301 Gehna Edifice, Linking Rd, Khar West</div>
+      <p>Strength and endurance in one session, with weighted and bodyweight options. Built around the movement patterns you use every day.</p>
+      <ul class="inside">
+        <li><b>6 yrs</b><span>Of SOHFIT coaching</span></li>
+        <li><b>16+</b><span>Age for group classes</span></li>
+        <li><b>8</b><span>Certified coaches</span></li>
+      </ul>
+      <div class="card-foot">
+        <div class="amen"><span>Group</span><span>1:1</span><span>Buddy</span><span>Open gym</span></div>
+        <div class="price"><small>Trial class</small>₹1,400<em> + GST</em></div>
+      </div>
+      <a href="#book" class="btn btn-plate card-cta">Book your trial <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how" aria-labelledby="how-h">
+    <div>
+      <span class="label">How it works</span>
+      <h2 class="h2" id="how-h">Your first class</h2>
+      <div class="steps" id="steps">
+        <button class="step on" data-i="0">
+          <small>01</small><h3>Pick your format</h3>
+          <p>Group class, personal training, a buddy session or open gym. Not sure? Book a consultation with our in-house specialists.</p>
+          <div class="bar"><i></i></div>
+        </button>
+        <button class="step" data-i="1">
+          <small>02</small><h3>Book on the SOHFIT App</h3>
+          <p>Reserve the classes in your package on the app. Want one outside it? Email hq@sohfit.com 24 hours ahead with the date, time and class.</p>
+          <div class="bar"><i></i></div>
+        </button>
+        <button class="step" data-i="2">
+          <small>03</small><h3>Show up, we handle the rest</h3>
+          <p>First visit, arrive 10 minutes early to get to know the studio. Coaches adjust every movement so beginners progress at their own pace.</p>
+          <div class="bar"><i></i></div>
+        </button>
+      </div>
+    </div>
+    <div class="app rv" id="app" data-step="0" aria-label="SOHFIT App booking preview">
+      <div class="app-head"><b>SOHFIT</b><span>BOOK A SESSION</span></div>
+      <div class="app-filter">
+        <div><small>Studio</small>HQ, Bandra</div>
+        <div><small>Format</small><span id="appFmt">Group class</span></div>
+        <div class="go">Search ↗</div>
+      </div>
+      <div class="app-cards">
+        <div class="mini"><div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/10/Group-class-main-banner-FINAL.jpg" alt="" loading="lazy"></div><div class="t"><b>Group class</b><span>Strength · endurance</span></div></div>
+        <div class="mini"><div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Personal-Training-Banner-1024x519.webp" alt="" loading="lazy"></div><div class="t"><b>Personal training</b><span>Tailored plan</span></div></div>
+        <div class="mini"><div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Buddy-Program-Banner-1024x527.webp" alt="" loading="lazy"></div><div class="t"><b>Buddy program</b><span>You + 2 or more</span></div></div>
+      </div>
+      <div class="app-msg" id="appMsg">Choose what suits you. Every format is coached.</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="svc-h">
+    <div class="sec-head">
+      <span class="label">Our services</span>
+      <h2 class="h2" id="svc-h">Six ways to train</h2>
+    </div>
+    <div class="rail-wrap">
+      <div class="rail" id="svcRail">
+        <div class="intro-card">
+          <h3>Find your fit</h3>
+          <p>Sweat in a group, train one-on-one, bring your friends or just use the floor. Every option runs out of SOHFIT HQ in Bandra.</p>
+          <a href="#book" class="btn btn-line">Book a trial ↗</a>
+        </div>
+        <article class="svc">
+          <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/10/Group-class-main-banner-FINAL.jpg" alt="Group class" loading="lazy"><span class="tag">Community</span></div>
+          <div class="body"><h3>Group classes</h3><p>Find inspiration, camaraderie and fun. Expect to sweat, smile and grow together with people who share your fitness journey.</p><a href="https://sohfithq.com/product-category/group-class/" target="_blank" rel="noopener">Discover more ↗</a></div>
+        </article>
+        <article class="svc">
+          <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Personal-Training-Banner-1024x519.webp" alt="Personal training" loading="lazy"><span class="tag">1 : 1</span></div>
+          <div class="body"><h3>Personal training</h3><p>Undivided attention and a fitness plan designed just for you, with a coach giving you constant guidance.</p><a href="https://sohfithq.com/product-category/personal-training/" target="_blank" rel="noopener">Discover more ↗</a></div>
+        </article>
+        <article class="svc">
+          <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Buddy-Program-Banner-1024x527.webp" alt="Buddy program" loading="lazy"><span class="tag">Small group</span></div>
+          <div class="body"><h3>Buddy program</h3><p>Train with a coach and two or more of your buddies. Workouts are tailored to your goals as a group.</p><a href="https://sohfithq.com/product-category/buddy-program/" target="_blank" rel="noopener">Discover more ↗</a></div>
+        </article>
+        <article class="svc">
+          <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/10/oiytfcgiytfdy5sttcgasc.jpg" alt="Open gym" loading="lazy"><span class="tag">Solo</span></div>
+          <div class="body"><h3>Open gym</h3><p>Prefer your own programme? Use the SOHFIT HQ studio, its equipment and facilities to do your own workout.</p><a href="https://sohfithq.com/product-category/open-gym/" target="_blank" rel="noopener">Discover more ↗</a></div>
+        </article>
+        <article class="svc">
+          <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Homepage-Image-3-1024x503.webp" alt="Programs and consultations" loading="lazy"><span class="tag">Specialists</span></div>
+          <div class="body"><h3>Programs &amp; consultations</h3><p>Meet our in-house specialists to discuss your health goals, explore annual memberships and plan how to move better and feel stronger.</p><a href="https://sohfithq.com/product-category/consultation/" target="_blank" rel="noopener">Discover more ↗</a></div>
+        </article>
+        <article class="svc">
+          <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/10/oiytfcgiytfdy5sttcgasc.jpg" alt="Weekend workshop" loading="lazy"><span class="tag">Weekends</span></div>
+          <div class="body"><h3>Weekends &amp; workshops</h3><p>Yoga and Flow, Turkish Get Up, Basics of Olympic Weightlifting and RFT Sequences.</p><a href="https://sohfithq.com/product-category/workshops/" target="_blank" rel="noopener">Discover more ↗</a></div>
+        </article>
+      </div>
+      <div class="arrows">
+        <button type="button" data-rail="svcRail" data-dir="-1" aria-label="Previous services"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button type="button" data-rail="svcRail" data-dir="1" aria-label="Next services"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHES -->
+  <section class="coaches" id="coaches" aria-labelledby="co-h">
+    <div class="coach-head">
+      <div>
+        <span class="label">Meet the coaches</span>
+        <h2 class="h2" id="co-h">More than trainers</h2>
+        <p>Whether you are a seasoned athlete or a complete beginner, our coaches teach you to make fitness a lifestyle. Your success is our success.</p>
+      </div>
+      <div class="arrows">
+        <button type="button" data-rail="coRail" data-dir="-1" aria-label="Previous coaches"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button type="button" data-rail="coRail" data-dir="1" aria-label="Next coaches"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <div class="rail crail" id="coRail"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq" aria-labelledby="faq-h">
+    <div class="sec-head">
+      <span class="label">FAQs</span>
+      <h2 class="h2" id="faq-h">Before your first class</h2>
+    </div>
+    <ul class="faq-list" id="faqList"></ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact rv" id="contact" aria-labelledby="ct-h">
+    <div class="contact-l">
+      <div>
+        <span class="label">Contact</span>
+        <h2 id="ct-h">Not sure where to start? Talk to us.</h2>
+        <p>Tell us what you want to work on and we'll point you to the right class, coach or consultation.</p>
+      </div>
+      <div class="dir">
+        <div><small>Visit</small><span>301 Gehna Edifice, Plot No 365, Linking Rd, Khar West, Mumbai 400052</span></div>
+        <div><small>Call / WhatsApp</small><a href="https://wa.me/918355817453" target="_blank" rel="noopener">+91 83558 17453</a><br><span>+91 99306 99726</span></div>
+        <div><small>Email</small><span>hq@sohfit.com</span></div>
+        <div><small>Follow</small><a href="https://www.instagram.com/sohfitofficial/" target="_blank" rel="noopener">Instagram</a> · <a href="http://facebook.com/sohfitofficial" target="_blank" rel="noopener">Facebook</a></div>
+      </div>
+    </div>
+    <form class="form" id="ctForm" novalidate>
+      <div><label for="ct-name">Full name</label><input id="ct-name" type="text" placeholder="Your full name" autocomplete="name"></div>
+      <div><label for="ct-svc">Interested in</label>
+        <select id="ct-svc"><option>Group classes</option><option>Personal training</option><option>Buddy program</option><option>Open gym</option><option>Consultation</option><option>Weekend workshops</option></select>
+      </div>
+      <div><label for="ct-msg">Message</label><textarea id="ct-msg" placeholder="What are your goals? Any injuries or questions?"></textarea></div>
+      <button class="btn btn-plate" type="submit">Send on WhatsApp <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></button>
+      <p class="hint" id="ctHint">Opens WhatsApp with your message ready to send.</p>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="ph"><img src="https://sohfithq.com/wp-content/uploads/2023/11/Personal-Training-Banner.webp" alt="A coach training a member at SOHFIT HQ" loading="lazy"></div>
+    <p class="giant" aria-hidden="true">SOHFIT</p>
+    <p class="giant solid" aria-hidden="true">SOHFIT</p>
+    <a class="pin f1" href="#contact"><i></i>Contact us</a>
+    <a class="pin f2" href="#book"><i></i>Book a trial</a>
+    <a class="pin f3" href="https://sohfit.com/" target="_blank" rel="noopener"><i></i>Train online</a>
+    <div class="foot-bar">
+      <div class="foot-row">
+        <ul>
+          <li><a href="#services">Group classes</a></li><li><a href="#services">Personal training</a></li>
+          <li><a href="#services">Buddy program</a></li><li><a href="#coaches">Coaches</a></li><li><a href="#faq">FAQs</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://www.instagram.com/sohfitofficial/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="http://facebook.com/sohfitofficial" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://wa.me/918355817453" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="foot-row sub">
+        <span>© 2026 SOHFIT Health And Wellness LLP · Khar West, Mumbai · <span class="clock" id="clock">--:-- IST</span></span>
+        <ul>
+          <li><a href="https://sohfithq.com/disclaimer/" target="_blank" rel="noopener">Disclaimer</a></li>
+          <li><a href="https://sohfithq.com/terms-and-conditions/" target="_blank" rel="noopener">Terms &amp; conditions</a></li>
+          <li><a href="https://sohfithq.com/privacy-policy/" target="_blank" rel="noopener">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="end"></div>
+</div>
+
+<script>
+(()=>{
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const WA = '918355817453';
+  const arrow = '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg>';
+
+  /* Coaches */
+  const U = 'https://sohfithq.com/wp-content/uploads/';
+  const coaches = [
+    ['Sohrab K.','2023/12/IMG_6863-715x1024.jpg','coaches/sohrab-k-9/'],
+    ['Divij M.','2024/10/WhatsApp-Image-2025-01-08-at-17.21.36-768x1024.jpeg','coaches/divij-m/'],
+    ['Somaditya S.','2023/09/1-40-715x1024.png','coaches/somaditya-s/'],
+    ['Abe L.','2023/09/WhatsApp-Image-2025-01-08-at-16.58.01-1-1024x1007.jpeg','coaches/abe-l/'],
+    ['Vanshika C.','2026/05/Coaches-Page-Sohfit-715x1024.png','coaches/vanshika-c/'],
+    ['Devika S.','2026/05/IMG_1074-1-768x1024.jpg','coaches/devika-sahajwani/'],
+    ['Ridhisha S.','2026/05/IMG_1099-768x1024.jpg','coaches/ridhisha-s/'],
+    ['Krishay S.','2026/07/IMG_6328.png','coaches/krishay-s/']
+  ];
+  document.getElementById('coRail').innerHTML = coaches.map(([n,img,link],i)=>`
+    <a class="coach" href="https://sohfithq.com/${link}" target="_blank" rel="noopener">
+      <div class="ph"><img src="${U+img}" alt="Coach ${n}" loading="lazy"></div>
+      <div class="cap"><div><b>${n}</b><small>Coach · ${String(i+1).padStart(2,'0')}/08</small></div><span class="go">${arrow}</span></div>
+    </a>`).join('');
+
+  /* FAQ */
+  const faqs = [
+    ['How much does a group class cost?','A trial class at SOHFIT HQ is INR 1,400 + GST. For a better deal and more consistent workouts, pick one of the packages listed for each group class.'],
+    ['How can I prepare for a group class at SOHFIT HQ?','If it is your first time, come 10 minutes early so you can get to know the place. If you have been before, arrive at least 5 minutes before class starts. Late arrivals cannot join once class has begun. Apart from that, just come to class and our coaches will handle the rest.'],
+    ['What is a SOHFIT workout like?','Our group classes help you move better in daily life, with a focus on fundamental movement patterns. Workouts are fun and challenging, fusing strength and endurance with weighted and bodyweight options, using dumbbells, barbells, kettlebells, medballs and more. Training at home? Our online services have virtual options.'],
+    ['How old should I be to attend a group class?','You need to be 16 or older for group classes (except the Teens class). If you are under 18, a parent or guardian has to sign a waiver.'],
+    ['Is it okay if I am a beginner or not in shape?','Of course. Our coaches are certified professionals who guide you with regressions throughout the class. Every class can be adjusted so you finish feeling good and progress at your own pace.'],
+    ['Can I book a class outside my active package?','You can only book classes you have registered for on the SOHFIT App. To attend one outside your package, email hq@sohfit.com with the date, time and class name at least 24 hours ahead, and we will try to accommodate you.'],
+    ['Do you have lockers and showers?','Yes, we have lockers and shower rooms at the studio. Please keep your belongings safe; we are not responsible for lost or missing items.']
+  ];
+  const fl = document.getElementById('faqList');
+  fl.innerHTML = faqs.map(([q,a],i)=>`
+    <li class="${i===0?'open':''}">
+      <button type="button" aria-expanded="${i===0}" aria-controls="fa${i}" id="fq${i}">
+        <span class="q">${q}</span>
+        <span class="x"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 4.5 3 3 3-3"/></svg></span>
+      </button>
+      <div class="a" id="fa${i}" role="region" aria-labelledby="fq${i}"><div><p>${a}</p></div></div>
+    </li>`).join('');
+  fl.addEventListener('click',e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    const li = b.parentElement, open = !li.classList.contains('open');
+    fl.querySelectorAll('li').forEach(x=>{x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded','false')});
+    if(open){li.classList.add('open');b.setAttribute('aria-expanded','true')}
+  });
+
+  /* Rails */
+  document.querySelectorAll('[data-rail]').forEach(b=>b.addEventListener('click',()=>{
+    const r = document.getElementById(b.dataset.rail);
+    const card = r.firstElementChild.getBoundingClientRect().width + 14;
+    r.scrollBy({left: card * +b.dataset.dir, behavior: reduce ? 'auto' : 'smooth'});
+  }));
+
+  /* Mobile menu */
+  const nav = document.getElementById('nav'), mb = document.getElementById('menuBtn');
+  mb.addEventListener('click',()=>{const o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded',o); mb.textContent = o ? 'Close' : 'Menu'});
+  nav.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');mb.textContent='Menu';mb.setAttribute('aria-expanded','false')}));
+
+  /* Booker tabs */
+  let mode = 'hq';
+  const note = document.getElementById('bk-note');
+  document.querySelectorAll('.tabs button').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true'); mode = t.dataset.mode;
+    note.innerHTML = mode==='hq'
+      ? 'Trial class at SOHFIT HQ: <b>INR 1,400 + GST</b>. Come 10 minutes early on your first visit.'
+      : 'Training from home? SOHFIT online programs run on <b>sohfit.com</b>. We will send you the right one.';
+  }));
+  const wa = txt => 'https://wa.me/'+WA+'?text='+encodeURIComponent(txt);
+  document.getElementById('book').addEventListener('submit',e=>{
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const name = v('bk-name') || 'there';
+    const msg = `Hi SOHFIT, I'm ${name}. I'd like to book a trial: ${v('bk-service')} ${mode==='hq'?'at HQ Bandra':'online'}, ${v('bk-coach')}, ${v('bk-time').toLowerCase()} slot.`;
+    window.open(wa(msg),'_blank','noopener');
+    note.innerHTML = 'WhatsApp should open with your request. If it did not, message <b>+91 83558 17453</b>.';
+  });
+  document.getElementById('ctForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const n = document.getElementById('ct-name').value.trim();
+    const hint = document.getElementById('ctHint');
+    if(!n){hint.textContent='Add your name so the team knows who is writing.';document.getElementById('ct-name').focus();return}
+    const msg = `Hi SOHFIT, I'm ${n}. Interested in: ${document.getElementById('ct-svc').value}. ${document.getElementById('ct-msg').value.trim()}`;
+    window.open(wa(msg),'_blank','noopener');
+    hint.textContent='WhatsApp should open with your message. If not, write to hq@sohfit.com.';
+  });
+
+  /* How it works: auto-advancing steps synced to app panel */
+  const steps = [...document.querySelectorAll('.step')], app = document.getElementById('app');
+  const fmt = ['Group class','Personal training','Buddy program'];
+  const msgs = ['Choose what suits you. Every format is coached.','Booked through the SOHFIT App. Outside your package? Email 24h ahead.','First visit? Arrive 10 minutes early. Coaches handle the rest.'];
+  let cur = 0, timer;
+  const go = i => {
+    cur = i; steps.forEach((s,j)=>s.classList.toggle('on',j===i));
+    app.dataset.step = i; document.getElementById('appFmt').textContent = fmt[i]; document.getElementById('appMsg').textContent = msgs[i];
+    clearTimeout(timer); if(!reduce) timer = setTimeout(()=>go((cur+1)%3), 5000);
+  };
+  steps.forEach((s,i)=>s.addEventListener('click',()=>go(i)));
+  go(0);
+
+  /* About: words light up as you read */
+  const ab = document.getElementById('aboutText');
+  ab.innerHTML = ab.textContent.split(' ').map(w=>`<span class="w">${w}</span>`).join(' ');
+  const words = [...ab.querySelectorAll('.w')];
+  const light = () => {
+    const r = ab.getBoundingClientRect(), vh = innerHeight;
+    const p = reduce ? 1 : Math.min(1, Math.max(0, (vh*0.85 - r.top) / (r.height + vh*0.35)));
+    const n = Math.round(p * words.length);
+    words.forEach((w,i)=>w.classList.toggle('on', i < n));
+  };
+
+  /* Showcase zoom-settle */
+  const show = document.getElementById('show');
+  const io = new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){show.classList.add('in');io.disconnect()}}),{threshold:.25});
+  io.observe(show);
+
+  addEventListener('scroll',light,{passive:true}); addEventListener('resize',light); light();
+
+  /* Mumbai clock */
+  const clk = document.getElementById('clock');
+  const tick = () => clk.textContent = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'}).format(new Date())+' IST';
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>
